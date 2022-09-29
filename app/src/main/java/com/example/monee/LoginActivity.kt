@@ -34,8 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun validate(userName: String, userPassword: String) {
         if ((userName == "Admin") && (userPassword == "1234")) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
         }
         /*else {
             counter--
