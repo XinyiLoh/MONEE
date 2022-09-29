@@ -11,6 +11,7 @@ class LoginActivity : AppCompatActivity() {
     private val name = binding.editName.text
     private val pw = binding.editPw.text
     private val btnLogin = binding.btnLogin
+    private val toRegister = binding.textRegister
     //private var counter: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,14 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             fun onClick(){
                 validate(name.toString(), pw.toString())
-            } }
+            }
+        }
+
+        toRegister.setOnClickListener {
+            fun onClick() {
+                startActivity(Intent(this, RegisterActivity::class.java))
+            }
+        }
     }
 
     private fun validate(userName: String, userPassword: String) {
