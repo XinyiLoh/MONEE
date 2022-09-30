@@ -62,11 +62,22 @@
     <string name="tnc_text1">
 These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
     </string>
+    <string name="tnc_text2">
+Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.
+    </string>
+    <string name="tnc_text3">
+By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.
+    </string>
+    <string name="tnc_text4">
+You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.
+    </string>
+
     <string name="back">Back</string>
     <string name="add_acc_info">Add Account Info</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="add">Add</string>
     <string name="birthyear">Birthyear</string>
+    <string name="gender">Gender</string>
 
 </resources>
