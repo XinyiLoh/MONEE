@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+
     //private lateinit var actionBar: ActionBar
     private lateinit var auth: FirebaseAuth
     //private lateinit var database: DatabaseReference
@@ -34,8 +35,6 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnRegister.setOnClickListener {
             validate()
-            //save data into DB
-            //registerNewUser(email, password)
         }
         binding.textLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -66,15 +65,15 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 val firebaseUser = auth.currentUser
                 val email = firebaseUser!!.email
-                Toast.makeText(this,"Account created with email $email", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this,RegisterDetailsActivity::class.java)
+                Toast.makeText(this, "Account created with email $email", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, RegisterDetailsActivity::class.java)
                 intent.putExtra("username",binding.editName.text.toString())
                 startActivity(intent)
             }
-            .addOnFailureListener{ e->
-                Toast.makeText(this,"Sign up failed due to ${e.message}", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Sign up failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
+
     }
 
     /*private fun registerNewUser(email: String, password: String) {

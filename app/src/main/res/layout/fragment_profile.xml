@@ -36,48 +36,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/image_profile"
-                        android:layout_width="121dp"
-                        android:layout_height="114dp"
-                        android:layout_marginTop="64dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/pngwing_com"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/text_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textColor="#FFFDE7"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/image_profile" />
-
-                    <TextView
-                        android:id="@+id/text_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_username" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
-                    android:layout_width="330dp"
-                    android:layout_height="350dp"
-                    android:layout_marginTop="260dp"
+                    android:layout_width="331dp"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="100dp"
                     android:background="#ffffff"
                     android:elevation="3dp"
                     android:orientation="vertical"
@@ -159,16 +124,16 @@
                             android:textAlignment="viewStart"
                             android:textAllCaps="false" />
 
-                        <Button
-                            android:id="@+id/menu_tnc"
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@android:color/transparent"
-                            android:text="@string/tnc"
-                            android:textAlignment="viewStart"
-                            android:textAllCaps="false" />
-
                     </LinearLayout>
+
+                    <Button
+                        android:id="@+id/menu_tnc"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:background="@android:color/transparent"
+                        android:text="@string/tnc"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false" />
 
                 </LinearLayout>
 
@@ -184,7 +149,7 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                    app:layout_constraintVertical_bias="0.273" />
+                    app:layout_constraintVertical_bias="0.397" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

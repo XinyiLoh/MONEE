@@ -6,7 +6,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.tasks.await
+//import kotlinx.coroutines.uitasks.await
 
 class CategoriesViewModel : ViewModel() {
 
@@ -19,7 +19,8 @@ class CategoriesViewModel : ViewModel() {
 
 
     suspend fun get(id: String): Categories? {
-        return col.document(id).get().await().toObject<Categories>()
+        //return col.document(id).get().await().toObject<Categories>()
+        return null
     }
 
     fun getAll() = cate
@@ -45,7 +46,7 @@ class CategoriesViewModel : ViewModel() {
     //----------------------------------------------------------------------------------------------
 
     private  suspend fun idExists(id: String): Boolean {
-        return col.document(id).get().await().exists()
+        //return col.document(id).get().await().exists()
 
 
         return false

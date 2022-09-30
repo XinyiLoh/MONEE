@@ -59,10 +59,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:20.0.6'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.8'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
-<<<<<<< Updated upstream
     implementation 'com.itextpdf:itextg:5.5.10'
-=======
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.1'
->>>>>>> Stashed changes
 }
