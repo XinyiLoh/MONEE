@@ -47,9 +47,9 @@ class RegisterActivity : AppCompatActivity() {
         val password = binding.editPw.text.toString().trim()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.regEditEmail.error = "Invalid email format"
+            binding.regEditEmail.setError("Invalid email format")
         } else if (password.length < 6) {
-            binding.editPw.error = "Password must at least 6 characters"
+            binding.editPw.setError("Password must at least 6 characters")
         } else {
             firebaseSignUp()
         }

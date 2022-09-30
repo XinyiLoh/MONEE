@@ -43,9 +43,11 @@ class LoginActivity : AppCompatActivity() {
         val pw = binding.editPw.text.toString().trim()
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            binding.editEmail.error = "Invalid email format"
+            binding.editEmail.setError("Invalid email format")
         }else if(TextUtils.isEmpty(pw)){
-            binding.editPw.error = "Please enter password"
+            binding.editPw.setError("Please enter password")
+        }else if(pw.length<6){
+            binding.editPw.setError("Password must at least 6 characters")
         }else{
             firebaseLogin()
         }

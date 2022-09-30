@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.monee.MainActivity
 import com.example.monee.R
 import com.example.monee.databinding.FragmentHomeBinding
 import com.example.monee.databinding.FragmentProfileBinding
@@ -18,48 +19,34 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
         return binding.root
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_profile, container, false)
-
-        auth = FirebaseAuth.getInstance()
-        checkUser()
-
-        binding.btnLogout.setOnClickListener {
-            auth.signOut()
-            checkUser()
-        }
-    }
-
-    private fun checkUser(){
-        val firebaseUser = auth.currentUser
-        if(firebaseUser!=null){
-            //user is logged in
-            val email = firebaseUser.email
-            binding.textEmail.setText(email)
-        }else{
-            //user is not logged in, go to login
-            startActivity(Intent(context, LoginActivity::class.java))
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(context, LoginActivity::class.java))
+        }
+
         binding.menuTnc.setOnClickListener {
-           // findNavController().navigate(R.id.action_ProfileFragment_to_TermsFragment)
+           findNavController().navigate(R.id.action_ProfileFragment_to_TermsFragment)
             //val fragment = TermsFragment()
             //val transaction = fragmentManager?.beginTransaction()
             //transaction?.replace(R.id.navigation,fragment)?.commit()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

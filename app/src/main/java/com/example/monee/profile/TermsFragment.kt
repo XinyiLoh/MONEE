@@ -27,4 +27,9 @@ class TermsFragment  : Fragment() {
             //transaction?.replace(R.id.navigation,fragment)?.commit()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
