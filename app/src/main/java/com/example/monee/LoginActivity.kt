@@ -2,6 +2,7 @@ package com.example.monee
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.monee.databinding.ActivityLoginBinding
 
@@ -9,6 +10,8 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val name = binding.editName.text
+    private val email = binding.editEmail.text
+    private val phone = binding.editPhone.text
     private val pw = binding.editPw.text
     private val btnLogin = binding.btnLogin
     private val toRegister = binding.textRegister
@@ -20,21 +23,28 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         btnLogin.setOnClickListener {
-            fun onClick(){
-                validate(name.toString(), pw.toString())
-            }
+            validate(name.toString(), phone.toString(), email.toString(), pw.toString())
         }
 
         toRegister.setOnClickListener {
-            fun onClick() {
-                startActivity(Intent(this, RegisterActivity::class.java))
-            }
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
-    private fun validate(userName: String, userPassword: String) {
-        if ((userName == "Admin") && (userPassword == "1234")) {
+    private fun validate(
+        userName: String,
+        userPhone: String,
+        userEmail: String,
+        userPassword: String
+    ) {
+        if ((userName == "Admin") && (userPhone == "1234")
+            && (userEmail == "admin@gmail.com") && (userPassword == "1234")
+        ) {
             startActivity(Intent(this, MainActivity::class.java))
+        } else if ((userName.isEmpty()) && (userPhone.isEmpty())
+            && (userEmail.isEmpty()) && (userPassword.isEmpty())
+        ) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }
         /*else {
             counter--
