@@ -1,5 +1,6 @@
 package com.example.monee.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,16 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.monee.R
+import com.example.monee.databinding.FragmentHomeBinding
 import com.example.monee.databinding.FragmentProfileBinding
+import com.example.monee.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +28,27 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
         return binding.root
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        //return inflater.inflate(R.layout.fragment_profile, container, false)
+
+        auth = FirebaseAuth.getInstance()
+        checkUser()
+
+        binding.btnLogout.setOnClickListener {
+            auth.signOut()
+            checkUser()
+        }
+    }
+
+    private fun checkUser(){
+        val firebaseUser = auth.currentUser
+        if(firebaseUser!=null){
+            //user is logged in
+            val email = firebaseUser.email
+            binding.textEmail.setText(email)
+        }else{
+            //user is not logged in, go to login
+            startActivity(Intent(context, LoginActivity::class.java))
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,6 +61,8 @@ class ProfileFragment : Fragment() {
             //transaction?.replace(R.id.navigation,fragment)?.commit()
         }
     }
+
+
 
     /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

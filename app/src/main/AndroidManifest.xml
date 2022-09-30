@@ -20,12 +20,12 @@
             android:parentActivityName=".MainActivity"
              />
         <activity
-            android:name=".login.RegisterActivity"
+            android:name=".login.LoginActivity"
             android:exported="false">
         </activity>
 
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".login.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
