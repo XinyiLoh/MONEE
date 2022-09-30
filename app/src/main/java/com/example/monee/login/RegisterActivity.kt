@@ -11,6 +11,7 @@ import com.example.monee.R
 import com.example.monee.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -42,21 +43,23 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validate() {
-        var result = false
-        val email = binding.regEditEmail.text.toString().trim()
+        val email = binding.editEmail.text.toString().trim()
         val password = binding.editPw.text.toString().trim()
+        val confirmpw = binding.confirmPw.text.toString().trim()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.regEditEmail.setError("Invalid email format")
+            binding.editEmail.setError("Invalid email format")
         } else if (password.length < 6) {
             binding.editPw.setError("Password must at least 6 characters")
+        } else if (!(password == confirmpw)) {
+            binding.confirmPw.setError("Password confirmation does not match")
         } else {
             firebaseSignUp()
         }
     }
 
     private fun firebaseSignUp() {
-        val email = binding.regEditEmail.text.toString().trim()
+        val email = binding.editEmail.text.toString().trim()
         val password = binding.editPw.text.toString().trim()
 
         auth.createUserWithEmailAndPassword(email, password)
@@ -65,7 +68,9 @@ class RegisterActivity : AppCompatActivity() {
                 val email = firebaseUser!!.email
                 Toast.makeText(this,"Account created with email $email", Toast.LENGTH_SHORT).show()
 
-                startActivity((Intent(this,MainActivity::class.java)))
+                val intent = Intent(this,RegisterDetailsActivity::class.java)
+                intent.putExtra("username",binding.editName.text.toString())
+                startActivity(intent)
             }
             .addOnFailureListener{ e->
                 Toast.makeText(this,"Sign up failed due to ${e.message}", Toast.LENGTH_SHORT).show()

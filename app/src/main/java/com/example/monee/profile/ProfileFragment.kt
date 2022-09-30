@@ -26,6 +26,17 @@ class ProfileFragment : Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
         return binding.root
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            // User is signed in
+            binding.textUsername.setText(user.email)
+            binding.textEmail.setText(user.email)
+        } else {
+            // No user is signed in
+            binding.textUsername.setText("null")
+            binding.textEmail.setText("null")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
