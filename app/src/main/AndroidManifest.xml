@@ -20,10 +20,6 @@
             android:label="@string/resource_bankCarLoanRate"
             android:parentActivityName=".MainActivity"
              />
-        <activity
-            android:name=".login.LoginActivity"
-            android:exported="false">
-        </activity>
 
         <activity
             android:name=".login.RegisterDetailsActivity"
@@ -39,12 +35,16 @@
         </activity>
 
         <activity
-        android:name=".MainActivity"
+            android:name=".MainActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+        android:name=".login.LoginActivity"
         android:exported="true"
         android:theme="@style/Theme.MONEE.NoActionBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>

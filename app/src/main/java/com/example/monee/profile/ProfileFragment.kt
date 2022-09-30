@@ -40,9 +40,10 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(context, LoginActivity::class.java))
         }
 
-        val user = FirebaseAuth.getInstance().currentUser
-        val reference = FirebaseDatabase.getInstance().getReference("users")
-        val userId = user?.uid
+        //retrieve user profile
+        //val user = FirebaseAuth.getInstance().currentUser
+        //val reference = FirebaseDatabase.getInstance().getReference("users")
+        //val userId = user?.uid
     }
 
     override fun onDestroyView() {
