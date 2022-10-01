@@ -41,7 +41,7 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        binding.btnInsert.setOnClickListener { findNavController().navigate(R.id.action_fragment_list_to_insertFragment) }
+        binding.btnInsert.setOnClickListener { findNavController().navigate(R.id.fragment_list) }
         binding.btnDeleteAll.setOnClickListener { deleteAll() }
 
         adapter = CategoriesAdapter() { holder, categories ->
