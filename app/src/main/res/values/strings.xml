@@ -7,8 +7,18 @@
     <string name="carloan_cal">Car Loan Calculator</string>
     <string name="daily_report">Daily Report</string>
 
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+
+    <string name="points">Points</string>
+    <string name="transactions">Transactions</string>
+
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="username">Username</string>
+    <string name="email">email</string>
 
     <string name="bankCarLoanRate">Bank Car Loan Interest Rates (updated on Oct,2022)</string>
     <string name="RHB">RHB Bank Auto Financing</string>
