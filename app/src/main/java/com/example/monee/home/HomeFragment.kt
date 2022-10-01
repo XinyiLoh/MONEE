@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        binding.btnSet.setOnClickListener { set() }
+        //binding.btnSet.setOnClickListener { set() }
         binding.btnUpdate.setOnClickListener { update() }
         binding.buttonDelete.setOnClickListener { delete() }
         return binding.root
@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun set() {
+    /*private fun set() {
         val f = Categories(2,17.9,"Income","Shopping")
 
         Firebase.firestore
@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
             .addOnSuccessListener { toast("Recorded Inserted") }
 
 
-    }
+    }*/
 
     private fun update() {
 

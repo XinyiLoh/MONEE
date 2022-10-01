@@ -39,5 +39,17 @@
     <string name="monthlyRepayment">Monthly Repayment</string>
     <string name="monthlyRepayment_price">RM 0.00</string>
 
+    <string name="id">ID</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="type">Type</string>
+    <string-array name="spinnerType">
+        <item>Income</item>
+        <item>Outcome</item>
+    </string-array>
+    <string name="submit">Submit</string>
+    <string name="reset">Reset</string>
+    <string name="date">Date</string>
+
 
 </resources>

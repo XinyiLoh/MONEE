@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.monee.calculator.CarLoanFragment
 import com.example.monee.home.HomeFragment
+import com.example.monee.home.InsertFragment
 import com.example.monee.home.ListFragment
 import com.example.monee.profile.ProfileFragment
 import com.example.monee.report.DailyFragment
@@ -36,7 +37,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_menu_id.setNavigationItemSelectedListener(this)
 
         setToolBarTitle("Home")
-        replaceFragment(ListFragment())
+        //replaceFragment(ListFragment())
+        replaceFragment(InsertFragment())
 
     }
 
