@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
         binding.btnSet.setOnClickListener { set() }
         binding.btnUpdate.setOnClickListener { update() }
-        binding.btnDelete.setOnClickListener { delete() }
+        binding.buttonDelete.setOnClickListener { delete() }
         return binding.root
 
     }
@@ -52,19 +52,19 @@ class HomeFragment : Fragment() {
             .addOnSuccessListener { snap ->
                 val list = snap.toObjects<Categories>()
                 var result = ""
-                list.forEach{ f -> result += "${f.amount} ${f.category} ${f.type}\n"}
+                list.forEach{ f -> result += "${f.id}},${f.amount} ${f.category} ${f.type}\n"}
                 binding.txtResult.text = result
-                
+
             }
 
     }
 
     private fun set() {
-        val f = Categories(17.00,"Income","Shopping")
+        val f = Categories(2,17.9,"Income","Shopping")
 
         Firebase.firestore
             .collection("categories")
-            .document("wdrtY19hkqAL4IoL3yAn")
+            .document("2")
             .set(f)
             .addOnSuccessListener { toast("Recorded Inserted") }
 
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
 
         Firebase.firestore
             .collection("categories")
-            .document("wdrtY19hkqAL4IoL3yAn")
+            .document("2")
             .update("amount",8.90,"category","Drink")
             .addOnSuccessListener { toast("Recorded Updated") }
 
@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
     private fun delete() {
         Firebase.firestore
             .collection("categories")
-            .document("wdrtY19hkqAL4IoL3yAn")
+            .document("2")
             .delete()
             .addOnSuccessListener { toast("Record Deleted") }
 
