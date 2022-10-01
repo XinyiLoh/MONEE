@@ -6,6 +6,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.monee.calculator.CarLoanFragment
 import com.example.monee.home.HomeFragment
 import com.example.monee.home.InsertFragment
@@ -21,6 +23,7 @@ import kotlinx.android.synthetic.main.content_main.*
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     //private lateinit var binding: ActivityMainBinding
+    //private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +41,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_menu_id.setNavigationItemSelectedListener(this)
 
         setToolBarTitle("Home")
-        replaceFragment(ListFragment())
-        //replaceFragment(InsertFragment())
+        //replaceFragment(ListFragment())
+
+        //Setup action bar
+        //setupActionBarWithNavController(nav)
+
 
     }
 
