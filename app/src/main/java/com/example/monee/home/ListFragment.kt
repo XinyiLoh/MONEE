@@ -11,8 +11,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.monee.R
 import com.example.monee.databinding.FragmentListBinding
+import com.example.monee.home.data.Categories
 import com.example.monee.home.data.CategoriesViewModel
 import com.example.monee.home.util.CategoriesAdapter
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.ktx.Firebase
 
 
 class ListFragment : Fragment() {
@@ -20,6 +24,7 @@ class ListFragment : Fragment() {
     private var _binding: FragmentListBinding?= null
     private val binding get() = _binding!!
     private val vm: CategoriesViewModel by activityViewModels()
+    private val nav by lazy { 0 }
 
     private lateinit var adapter: CategoriesAdapter
 
@@ -36,7 +41,7 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        binding.btnInsert.setOnClickListener {  findNavController().navigate(R.id.insertFragment) }
+        binding.btnInsert.setOnClickListener { findNavController().navigate(R.id.action_fragment_list_to_insertFragment) }
         binding.btnDeleteAll.setOnClickListener { deleteAll() }
 
         adapter = CategoriesAdapter() { holder, categories ->
@@ -50,7 +55,22 @@ class ListFragment : Fragment() {
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
+        /*Firebase.firestore
+            .collection("categories")
+            .get()
+            .addOnSuccessListener { snap ->
+                val list = snap.toObjects<Categories>()
+                adapter.submitList(list)
+                binding.txtCount.text = "${list.size} record(s)"
+            }*/
+
         return binding.root
+    }
+
+
+
+
+
     }
 
     private fun deleteAll() {
@@ -64,4 +84,3 @@ class ListFragment : Fragment() {
     }
 
 
-}

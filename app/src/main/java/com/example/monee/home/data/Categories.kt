@@ -1,14 +1,13 @@
 package com.example.monee.home.data
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import java.util.Date
 
-@Entity
-data class Categories (
+data class Categories(
     val id: Int,
     val amount: Double,
     val type: String,
-    val category: String
+    val category: String,
+    val date: String
                        )
 
 

@@ -18,6 +18,11 @@
             android:label="@string/resource_bankCarLoanRate"
             android:parentActivityName=".MainActivity"
              />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
