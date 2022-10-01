@@ -47,12 +47,14 @@ class HomeFragment : Fragment() {
     private fun read() {
 
         Firebase.firestore
-            .collection("categories").
-            get().
-            addOnSuccessListener { snap -> val list = snap.toObjects<Categories>()
+            .collection("categories")
+            .get()
+            .addOnSuccessListener { snap ->
+                val list = snap.toObjects<Categories>()
                 var result = ""
                 list.forEach{ f -> result += "${f.amount} ${f.category} ${f.type}\n"}
                 binding.txtResult.text = result
+                
             }
 
     }
@@ -62,7 +64,7 @@ class HomeFragment : Fragment() {
 
         Firebase.firestore
             .collection("categories")
-            .document()
+            .document("wdrtY19hkqAL4IoL3yAn")
             .set(f)
             .addOnSuccessListener { toast("Recorded Inserted") }
 
@@ -70,12 +72,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun update() {
-        // TODO
+
+        Firebase.firestore
+            .collection("categories")
+            .document("wdrtY19hkqAL4IoL3yAn")
+            .update("amount",8.90,"category","Drink")
+            .addOnSuccessListener { toast("Recorded Updated") }
 
     }
 
     private fun delete() {
-        // TODO
+        Firebase.firestore
+            .collection("categories")
+            .document("wdrtY19hkqAL4IoL3yAn")
+            .delete()
+            .addOnSuccessListener { toast("Record Deleted") }
 
     }
 
