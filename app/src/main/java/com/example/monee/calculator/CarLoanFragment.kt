@@ -44,22 +44,25 @@ class CarLoanFragment : Fragment() {
         }
     }
 
-    private fun isNumeric(toCheck: String): Boolean {
+    private fun isNumeric(toCheck: String) :String {
         val regex = "-?[0-9]+(\\.[0-9]+)?".toRegex()
-        return toCheck.matches(regex)
+        if(!toCheck.matches(regex)){
+            return "Must be decimal"
+        }
+        return ""
     }
 
     private fun calculateCarLoan() {
 
-        val carPrice = _binding?.vehiclePrice.toString()
-        val downPayment = _binding?.downPayment.toString()
-        val yrs = _binding?.loanPeriod.toString()
-        val rate = _binding?.interestRate.toString()
+        val carPrice = Integer.parseInt(_binding?.vehiclePrice.toString())
+        val downPayment = Integer.parseInt(_binding?.downPayment.toString())
+        val yrs = Integer.parseInt(_binding?.loanPeriod.toString())
+        val rate = Integer.parseInt(_binding?.interestRate.toString())
 
-        vehicle_price.helperText = isNumeric(carPrice).toString()
-        down_payment.helperText = isNumeric(downPayment).toString()
-        loan_period.helperText = isNumeric(yrs).toString()
-        interest_rate.helperText = isNumeric(rate).toString()
+        //vehicle_price.helperText = isNumeric(carPrice)
+        //down_payment.helperText = isNumeric(downPayment)
+        //loan_period.helperText = isNumeric(yrs)
+        //interest_rate.helperText = isNumeric(rate)
 
         val checkCarPrice = vehicle_price.helperText == null
         val checkDownPayment = down_payment.helperText == null
@@ -68,6 +71,15 @@ class CarLoanFragment : Fragment() {
 
         if (checkCarPrice && checkDownPayment && checkLoanPeriod && checkInterest) {
             //var monthlyPayment = carPrice
+            //$ Loan Amount = Car Price - Down Payment
+            //$ Interest = Loan Amount * Interest Rate * Loan Period (in year)
+            //$ Monthly Payment = (Loan Amount + Interest) / Loan Period (in month)
+
+            var loanAmount = carPrice - downPayment
+            var interest = loanAmount * rate * yrs
+            var monthPay = (loanAmount + interest) / ( yrs * 12 )
+
+            textView_mr_price.text = monthPay.toString()
         }
     }
 

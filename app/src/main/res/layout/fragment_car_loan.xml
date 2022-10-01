@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="8dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,16 +149,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/vehicle_price"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="40dp"
         app:errorEnabled="true"
         app:helperText="Required"
         app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/down_payment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
@@ -167,31 +166,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Car Price"
-            android:inputType="numberDecimal"
-            tools:layout_editor_absoluteY="5dp"/>
+            android:inputType="number"
+            tools:layout_editor_absoluteY="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/down_payment"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
         android:layout_margin="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
         app:errorEnabled="true"
         app:helperText="Required"
         app:helperTextTextColor="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_price">
+        app:layout_constraintStart_toEndOf="@+id/vehicle_price"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/downPayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Down Payment"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             tools:layout_editor_absoluteY="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -208,7 +207,7 @@
         app:helperTextTextColor="@color/design_default_color_error"
         app:layout_constraintEnd_toStartOf="@+id/interest_rate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/down_payment">
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_price">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loanPeriod"
@@ -238,23 +237,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Rate"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             tools:layout_editor_absoluteY="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_calculateCarLoan"
         android:layout_width="130dp"
-        android:layout_height="62dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="4dp"
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toEndOf="@+id/textview_monthlyRepayment"
         app:layout_constraintTop_toBottomOf="@+id/interest_rate"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.283" />
 
     <TextView
         android:id="@+id/textview_monthlyRepayment"
@@ -276,9 +275,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_calculateCarLoan"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_monthlyRepayment"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.083" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
