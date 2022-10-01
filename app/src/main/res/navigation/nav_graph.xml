@@ -3,16 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/fragment_list">
 
+    <fragment
+        android:id="@+id/fragment_list"
+        android:name="com.example.monee.home.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.monee.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="homeFragment"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/fragment_list"
-        android:name="com.example.monee.fragment_list"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        android:id="@+id/insertFragment"
+        android:name="com.example.monee.InsertFragment"
+        android:label="fragment_insert"
+        tools:layout="@layout/fragment_insert" />
 </navigation>

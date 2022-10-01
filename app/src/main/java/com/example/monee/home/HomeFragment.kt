@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
 
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.btnList.setOnClickListener { findNavController().navigate(R.id.fragment_list) }
+        binding.btnList.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
 
         binding.btnRead.setOnClickListener {
             read()
