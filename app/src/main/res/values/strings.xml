@@ -36,6 +36,8 @@
     <string name="CIMB">CIMB Bank Hire Purchase</string>
     <string name="CIMB_rate">2.85% p.a.</string>
     <string name="resource_bankCarLoanRate">Resources from iMoney</string>
+    <string name="monthlyRepayment">Monthly Repayment</string>
+    <string name="monthlyRepayment_price">RM 0.00</string>
 
 
 </resources>
