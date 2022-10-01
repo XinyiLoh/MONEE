@@ -8,6 +8,11 @@ android {
     namespace 'com.example.monee'
     compileSdk 32
 
+    buildFeatures {
+        viewBinding true
+    }
+
+
     defaultConfig {
         applicationId "com.example.monee"
         minSdk 21
