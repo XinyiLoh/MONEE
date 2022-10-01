@@ -19,6 +19,4 @@
         android:layout_gravity="start">
     </com.google.android.material.navigation.NavigationView>
 
-    <include layout="@layout/fragment_home" />
-
 </androidx.drawerlayout.widget.DrawerLayout>
