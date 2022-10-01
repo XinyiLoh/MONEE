@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "690922488441",
+    "project_id": "monee-ff141",
+    "storage_bucket": "monee-ff141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690922488441:android:2fc95bf261cf45215a0aa8",
+        "android_client_info": {
+          "package_name": "com.example.monee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690922488441-f6rkbmafn86g3pdh1o6go6brah83ou35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-xMqO0QKJjaSMe1gO5DVtmrH0k8Iz9F8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690922488441-f6rkbmafn86g3pdh1o6go6brah83ou35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
