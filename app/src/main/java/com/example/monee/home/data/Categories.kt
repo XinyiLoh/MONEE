@@ -1,4 +1,4 @@
-package my.edu.tarc.mycontact.model
+package com.example.monee.home.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
