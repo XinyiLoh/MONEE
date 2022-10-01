@@ -18,16 +18,16 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_main)
 
         //setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
+        
         val toggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close)
         toggle.isDrawerIndicatorEnabled=true
         drawerLayout.addDrawerListener(toggle)
