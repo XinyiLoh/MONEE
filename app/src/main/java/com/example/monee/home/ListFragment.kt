@@ -11,12 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.monee.R
 import com.example.monee.databinding.FragmentListBinding
-import com.example.monee.home.data.Categories
 import com.example.monee.home.data.CategoriesViewModel
 import com.example.monee.home.util.CategoriesAdapter
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObjects
-import com.google.firebase.ktx.Firebase
 
 
 class ListFragment : Fragment() {
@@ -24,16 +20,16 @@ class ListFragment : Fragment() {
     private var _binding: FragmentListBinding?= null
     private val binding get() = _binding!!
     private val vm: CategoriesViewModel by activityViewModels()
-    private val nav by lazy { 0 }
+    private val nav by lazy { findNavController() }
 
     private lateinit var adapter: CategoriesAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
 
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +37,7 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        binding.btnInsert.setOnClickListener { findNavController().navigate(R.id.fragment_list) }
+        binding.btnInsert.setOnClickListener { nav.navigate(R.id.insertFragment) }
         binding.btnDeleteAll.setOnClickListener { deleteAll() }
 
         adapter = CategoriesAdapter() { holder, categories ->
