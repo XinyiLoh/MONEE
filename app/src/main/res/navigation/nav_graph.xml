@@ -21,6 +21,15 @@
         android:label="fragment_insert"
         tools:layout="@layout/fragment_insert" />
     <fragment
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        android:id="@+id/spinnerFragment"
+        android:name="com.example.monee.SpinnerFragment"
+        android:label="fragment_spinner"
+        tools:layout="@layout/fragment_spinner" />
+=======
+>>>>>>> Stashed changes
         android:id="@+id/profileFragment"
         android:name="com.example.monee.profile.ProfileFragment"
         android:label="profile_fragment"
@@ -39,4 +48,8 @@
             app:destination="@id/profileFragment" />
     </fragment>
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> 89aa810ec14cf97187ea5ca0da1a2e752fb4fa55
+>>>>>>> Stashed changes
 </navigation>

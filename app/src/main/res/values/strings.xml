@@ -298,5 +298,6 @@ us:
 * By phone number: 010-0000 0000
     </string>
     <string name="thisYear">2022</string>
+    <string name="spinTitle">SPIN To Get Points</string>
 
 </resources>
