@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import com.example.monee.R
 import com.example.monee.databinding.FragmentCarLoanBinding
 import kotlinx.android.synthetic.main.fragment_car_loan.*
-
 
 class CarLoanFragment : Fragment() {
 
@@ -44,42 +44,33 @@ class CarLoanFragment : Fragment() {
         }
     }
 
-    private fun isNumeric(toCheck: String) :String {
-        val regex = "-?[0-9]+(\\.[0-9]+)?".toRegex()
-        if(!toCheck.matches(regex)){
-            return "Must be decimal"
-        }
-        return ""
-    }
-
     private fun calculateCarLoan() {
 
-        val carPrice = Integer.parseInt(_binding?.vehiclePrice.toString())
-        val downPayment = Integer.parseInt(_binding?.downPayment.toString())
-        val yrs = Integer.parseInt(_binding?.loanPeriod.toString())
-        val rate = Integer.parseInt(_binding?.interestRate.toString())
+        val editTextCarPrice: EditText = binding.carPrice
+        val editTextDownPayment: EditText = binding.downPayment
+        val editTextYear: EditText = binding.loanPeriod
+        val editTextInterestRate: EditText = binding.interestRate
 
-        //vehicle_price.helperText = isNumeric(carPrice)
-        //down_payment.helperText = isNumeric(downPayment)
-        //loan_period.helperText = isNumeric(yrs)
-        //interest_rate.helperText = isNumeric(rate)
+        val car = editTextCarPrice.text.toString().toFloatOrNull()
+        val down = editTextDownPayment.text.toString().toFloatOrNull()
+        val yrs = editTextYear.text.toString().toFloatOrNull()
+        val rate = editTextInterestRate.text.toString().toFloatOrNull()
 
-        val checkCarPrice = vehicle_price.helperText == null
-        val checkDownPayment = down_payment.helperText == null
-        val checkLoanPeriod = loan_period.helperText == null
-        val checkInterest = interest_rate.helperText == null
-
-        if (checkCarPrice && checkDownPayment && checkLoanPeriod && checkInterest) {
+        //if (checkCarPrice && checkDownPayment && checkLoanPeriod && checkInterest) {
             //var monthlyPayment = carPrice
             //$ Loan Amount = Car Price - Down Payment
             //$ Interest = Loan Amount * Interest Rate * Loan Period (in year)
             //$ Monthly Payment = (Loan Amount + Interest) / Loan Period (in month)
 
-            var loanAmount = carPrice - downPayment
-            var interest = loanAmount * rate * yrs
+        if(car != null && down != null && yrs != null && rate !=null){
+            var loanAmount = car - down
+            var newRate = rate / 100
+            var interest = loanAmount * newRate * yrs
             var monthPay = (loanAmount + interest) / ( yrs * 12 )
 
-            textView_mr_price.text = monthPay.toString()
+            textView_mr_price.text = "RM" + monthPay.toString()
+        }else{
+            Toast.makeText(context,"Incomplete input",Toast.LENGTH_SHORT).show()
         }
     }
 

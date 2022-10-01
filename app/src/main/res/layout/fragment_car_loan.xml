@@ -146,100 +146,62 @@
         </TableRow>
     </TableLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/vehicle_price"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        app:errorEnabled="true"
-        app:helperText="Required"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toStartOf="@+id/down_payment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/vehiclePrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Car Price"
-            android:inputType="number"
-            tools:layout_editor_absoluteY="5dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/down_payment"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="82dp"
-        android:layout_margin="10dp"
+    <EditText
+        android:id="@+id/carPrice"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
-        app:errorEnabled="true"
-        app:helperText="Required"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/vehicle_price"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/downPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Down Payment"
-            android:inputType="number"
-            tools:layout_editor_absoluteY="5dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/loan_period"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="20dp"
-        app:errorEnabled="true"
-        app:helperText="Required"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toStartOf="@+id/interest_rate"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Car Price"
+        app:layout_constraintEnd_toStartOf="@+id/downPayment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_price">
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loanPeriod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Loan Period (year)"
-            android:inputType="number"
-            tools:layout_editor_absoluteY="5dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/interest_rate"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="82dp"
-        android:layout_margin="10dp"
-        android:layout_marginEnd="8dp"
-        app:errorEnabled="true"
-        app:helperText="Required"
-        app:helperTextTextColor="@color/design_default_color_error"
+    <EditText
+        android:id="@+id/downPayment"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Down Payment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/loan_period"
-        app:layout_constraintTop_toBottomOf="@+id/down_payment">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/carPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/interestRate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Rate"
-            android:inputType="number"
-            tools:layout_editor_absoluteY="5dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/loanPeriod"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:hint="Loan Period (year)"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/interestRate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carPrice" />
+
+    <EditText
+        android:id="@+id/interestRate"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Interest Rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/loanPeriod"
+        app:layout_constraintTop_toBottomOf="@+id/downPayment" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_calculateCarLoan"
@@ -247,23 +209,24 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="4dp"
+        android:layout_marginBottom="56dp"
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintHorizontal_bias="0.67"
+
         app:layout_constraintStart_toEndOf="@+id/textview_monthlyRepayment"
-        app:layout_constraintTop_toBottomOf="@+id/interest_rate"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintTop_toBottomOf="@+id/interestRate" />
 
     <TextView
         android:id="@+id/textview_monthlyRepayment"
         android:layout_width="125dp"
         android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="52dp"
         android:text="@string/monthlyRepayment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loan_period" />
+        app:layout_constraintTop_toBottomOf="@+id/loanPeriod" />
 
     <TextView
         android:id="@+id/textView_mr_price"
@@ -275,9 +238,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_calculateCarLoan"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_monthlyRepayment"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.287" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
