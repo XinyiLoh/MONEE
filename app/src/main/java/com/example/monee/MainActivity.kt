@@ -11,6 +11,7 @@ import com.example.monee.home.HomeFragment
 import com.example.monee.home.ListFragment
 import com.example.monee.profile.ProfileFragment
 import com.example.monee.report.DailyFragment
+import com.example.monee.report.SummaryFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -51,6 +52,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.home -> {
                 replaceFragment(HomeFragment())
                 setToolBarTitle("Home")}
+            R.id.summaryReport -> {
+                replaceFragment(SummaryFragment())
+                setToolBarTitle("Summary Report")
+            }
             R.id.dailyReport -> {
                 replaceFragment(DailyFragment())
                 setToolBarTitle("Daily Report")

@@ -56,11 +56,9 @@ class CarLoanFragment : Fragment() {
         val yrs = editTextYear.text.toString().toFloatOrNull()
         val rate = editTextInterestRate.text.toString().toFloatOrNull()
 
-        //if (checkCarPrice && checkDownPayment && checkLoanPeriod && checkInterest) {
-            //var monthlyPayment = carPrice
-            //$ Loan Amount = Car Price - Down Payment
-            //$ Interest = Loan Amount * Interest Rate * Loan Period (in year)
-            //$ Monthly Payment = (Loan Amount + Interest) / Loan Period (in month)
+        //$ Loan Amount = Car Price - Down Payment
+        //$ Interest = Loan Amount * Interest Rate * Loan Period (in year)
+        //$ Monthly Payment = (Loan Amount + Interest) / Loan Period (in month)
 
         if(car != null && down != null && yrs != null && rate !=null){
             var loanAmount = car - down

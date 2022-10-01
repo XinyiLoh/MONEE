@@ -38,6 +38,7 @@
     <string name="resource_bankCarLoanRate">Resources from iMoney</string>
     <string name="monthlyRepayment">Monthly Repayment</string>
     <string name="monthlyRepayment_price">RM 0.00</string>
+    <string name="summaryReport">Summary Report</string>
 
 
 </resources>

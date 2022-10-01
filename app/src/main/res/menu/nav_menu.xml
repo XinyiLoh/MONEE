@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home" />
     <item
+        android:id="@+id/summaryReport"
+        android:icon="@drawable/ic_baseline_table_rows_24"
+        android:title="@string/summaryReport" />
+    <item
         android:id="@+id/dailyReport"
         android:icon="@drawable/ic_baseline_calendar_month_24"
         android:title="@string/daily_report" />
