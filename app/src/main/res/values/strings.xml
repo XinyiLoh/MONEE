@@ -10,4 +10,18 @@
     <string name="open">open</string>
     <string name="close">close</string>
 
+    <string name="bankCarLoanRate">Bank Car Loan Interest Rates (updated on Oct,2022)</string>
+    <string name="RHB">RHB Bank Auto Financing</string>
+    <string name="RHB_rate">3.18% p.a.</string>
+    <string name="PB">Public Bank Vehicle Financing</string>
+    <string name="PB_rate">3.31% p.a.</string>
+    <string name="MB">Maybank Car Loan</string>
+    <string name="MB_rate">3.40% p.a.</string>
+    <string name="HLB">Hong Leong Bank Car Financing</string>
+    <string name="HLB_rate">3.24% p.a.</string>
+    <string name="CIMB">CIMB Bank Hire Purchase</string>
+    <string name="CIMB_rate">2.85% p.a.</string>
+    <string name="resource_bankCarLoanRate">Resources from iMoney</string>
+
+
 </resources>
