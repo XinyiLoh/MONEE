@@ -16,8 +16,6 @@ import my.edu.tarc.mycontact.model.Categories
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding ?= null
-
-
     private val binding get() = _binding!!
 
 
@@ -25,22 +23,19 @@ class HomeFragment : Fragment() {
 
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         binding.btnList.setOnClickListener { findNavController().navigate(R.id.fragment_list) }
         binding.btnRead.setOnClickListener { read() }
         binding.btnSet.setOnClickListener { set() }
         binding.btnUpdate.setOnClickListener { update() }
         binding.btnDelete.setOnClickListener { delete() }
-
         return binding.root
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-    }
+    }*/
 
 
 
@@ -49,10 +44,11 @@ class HomeFragment : Fragment() {
             .collection("categories").
             get().
             addOnSuccessListener { snap -> val list = snap.toObjects<Categories>()
-            var result = ""
-            list.forEach{ f -> result += "${f.amount} ${f.category} ${f.type}\n"}
+                var result = ""
+                list.forEach{ f -> result += "${f.amount} ${f.category} ${f.type}\n"}
                 binding.txtResult.text = result
             }
+
 
     }
 
