@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_menu_id.setNavigationItemSelectedListener(this)
 
         setToolBarTitle("Home")
-        //replaceFragment(ListFragment())
-        replaceFragment(InsertFragment())
+        replaceFragment(ListFragment())
+        //replaceFragment(InsertFragment())
 
     }
 

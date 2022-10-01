@@ -24,6 +24,7 @@ class ListFragment : Fragment() {
     private var _binding: FragmentListBinding?= null
     private val binding get() = _binding!!
     private val vm: CategoriesViewModel by activityViewModels()
+    private val nav by lazy { 0 }
 
     private lateinit var adapter: CategoriesAdapter
 
@@ -40,7 +41,7 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        binding.btnInsert.setOnClickListener {  findNavController().navigate(R.id.action_fragment_list_to_insertFragment) }
+        binding.btnInsert.setOnClickListener { findNavController().navigate(R.id.action_fragment_list_to_insertFragment) }
         binding.btnDeleteAll.setOnClickListener { deleteAll() }
 
         adapter = CategoriesAdapter() { holder, categories ->
