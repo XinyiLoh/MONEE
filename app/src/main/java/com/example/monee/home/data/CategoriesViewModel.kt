@@ -3,8 +3,10 @@ package com.example.monee.home.data
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
+//import kotlinx.coroutines.uitasks.await
 
 class CategoriesViewModel : ViewModel() {
 
@@ -16,8 +18,8 @@ class CategoriesViewModel : ViewModel() {
     }
 
 
-    fun get(id: String): Categories? {
-        // TODO
+    suspend fun get(id: String): Categories? {
+        //return col.document(id).get().await().toObject<Categories>()
         return null
     }
 
@@ -43,41 +45,36 @@ class CategoriesViewModel : ViewModel() {
 
     //----------------------------------------------------------------------------------------------
 
-    /*fun idExists(id: String): Boolean {
-        // TODO: Duplicated id?
+    private  suspend fun idExists(id: String): Boolean {
+        //return col.document(id).get().await().exists()
+
+
         return false
     }
 
-    fun nameExists(name: String): Boolean {
-        // TODO: Duplicated name?
-        return false
-    }
 
-    fun validate(f: Categories, insert: Boolean = true): String {
-        val regexId = Regex("""^[0-9A-Z]{4}$""")
-        var e = ""
+    suspend fun validate(f: Categories, insert: Boolean = true): String {
+        var validation = ""
 
         if (insert) {
-            e += if (f.id == "") "- Id is required.\n"
-            else if (!f.id.matches(regexId)) "- Id format is invalid.\n"
-            else if (idExists(f.id)) "- Id is duplicated.\n"
+            validation += if (f.id == 0) "- Id is required.\n"
+            else if (idExists(f.id.toString())) "- Id is duplicated.\n"
             else ""
+
         }
-
-        e += if (f.name == "") "- Name is required.\n"
-        else if (f.name.length < 3) "- Name is too short.\n"
-        else if (nameExists(f.name)) "- Name is duplicated.\n"
+        validation += if (f.category == "") "- Category is required.\n"
         else ""
 
-        e += if (f.age == 0) "- Age is required.\n"
-        else if (f.age < 18) "- Underage.\n"
+        validation += if (f.amount == 0.0) "- Amount is required.\n"
+        else if (f.amount < 0) "- Invalid.\n"
         else ""
 
-        /*
-        e += if (f.photo.toBytes().isEmpty()) "- Photo is required.\n"
+        validation += if (f.date == "") "- Date is required.\n"
         else ""
-        */
 
-        return e
-    }*/
+
+        return validation
+    }
+
+
 }
