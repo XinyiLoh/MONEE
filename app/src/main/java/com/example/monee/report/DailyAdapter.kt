@@ -21,6 +21,7 @@ class DailyAdapter(private val dailyList: ArrayList<Categories>) :
         holder.tvCat.text = currentDaily.category
         holder.tvFlow.text = currentDaily.type
         holder.tvAmount.text = currentDaily.amount.toString()
+        holder.tvdate.text = currentDaily.date
     }
 
     override fun getItemCount(): Int {
@@ -32,6 +33,7 @@ class DailyAdapter(private val dailyList: ArrayList<Categories>) :
         val tvFlow : TextView = itemView.findViewById(R.id.textView_flow)
         val tvCat : TextView = itemView.findViewById(R.id.textView_cat)
         val tvAmount : TextView = itemView.findViewById(R.id.textViewAmount)
+        val tvdate : TextView = itemView.findViewById(R.id.textView_date)
 
     }
 
