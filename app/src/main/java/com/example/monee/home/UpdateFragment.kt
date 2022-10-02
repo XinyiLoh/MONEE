@@ -64,7 +64,7 @@ class UpdateFragment : Fragment() {
 
     private fun submit() {
         val f = Categories(
-            id = id.toInt(),
+            id = id.toString().toInt(),
             amount = binding.edtAmount.text.toString().toDouble(),
             type = binding.edtSpinnerType.selectedItem.toString().trim(),
             category = binding.edtCategory.text.toString().trim(),

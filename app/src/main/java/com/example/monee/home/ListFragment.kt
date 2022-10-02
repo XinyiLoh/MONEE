@@ -24,7 +24,6 @@ class ListFragment : Fragment() {
     private val vm: CategoriesViewModel by activityViewModels()
     private val nav by lazy { findNavController() }
 
-
     private lateinit var adapter: CategoriesAdapter
 
     override fun onCreateView(
@@ -40,7 +39,7 @@ class ListFragment : Fragment() {
         adapter = CategoriesAdapter() { holder, categories ->
 
             holder.root.setOnClickListener {
-                nav.navigate(R.id.UpdateFragment, bundleOf("id" to categories.id))
+                nav.navigate(R.id.UpdateFragment, bundleOf("id" to categories.id.toString()))
 
             }
 
@@ -64,12 +63,9 @@ class ListFragment : Fragment() {
     }
 
     private fun delete(id: String) {
-
         vm.delete(id)
     }
 
-    private fun toast (text: String){
-        Toast.makeText(context,text, Toast.LENGTH_SHORT).show()
-    }
+
 
 }
