@@ -79,10 +79,10 @@ class UpdateFragment : Fragment() {
                 return@launch
             }
 
-            vm.set(c)
-            nav.navigateUp()
-
         }
+
+        vm.set(c)
+        nav.navigateUp()
 
 
 
