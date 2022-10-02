@@ -20,6 +20,13 @@
         android:name="com.example.monee.InsertFragment"
         android:label="fragment_insert"
         tools:layout="@layout/fragment_insert" />
+
+    <fragment
+        android:id="@+id/spinnerFragment"
+        android:name="com.example.monee.SpinnerFragment"
+        android:label="fragment_spinner"
+        tools:layout="@layout/fragment_spinner" />
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.monee.profile.ProfileFragment"

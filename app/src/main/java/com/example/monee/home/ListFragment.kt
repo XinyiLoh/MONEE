@@ -5,31 +5,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.example.monee.R
 import com.example.monee.databinding.FragmentListBinding
+import com.example.monee.home.data.Categories
 import com.example.monee.home.data.CategoriesViewModel
 import com.example.monee.home.util.CategoriesAdapter
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.ktx.Firebase
 
 
 class ListFragment : Fragment() {
 
-    private var _binding: FragmentListBinding?= null
+    private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
     private val vm: CategoriesViewModel by activityViewModels()
     private val nav by lazy { findNavController() }
 
+
     private lateinit var adapter: CategoriesAdapter
 
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-
-    }*/
+    private lateinit var dbref : DatabaseReference
+    private lateinit var categoriesRecycleview : RecyclerView
+    private lateinit var categoriesArrayList : ArrayList<Categories>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,20 +57,28 @@ class ListFragment : Fragment() {
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
+
         /*Firebase.firestore
             .collection("categories")
             .get()
-            .addOnSuccessListener { snap ->
-                val list = snap.toObjects<Categories>()
+            .addOnSuccessListener { snapshot ->
+                val list = snapshot.toObjects<Categories>()
                 adapter.submitList(list)
                 binding.txtCount.text = "${list.size} record(s)"
             }*/
 
+        Firebase.firestore
+            .collection("categories")
+            .get()
+            .addOnSuccessListener { snapshot ->
+                val list = snapshot.toObjects<Categories>()
+                adapter.submitList(snapshot.toObjects<Categories>())
+                binding.txtCount.text = "${list.size} record(s)"
+            }
+
+
+
         return binding.root
-    }
-
-
-
 
 
     }
@@ -79,4 +93,8 @@ class ListFragment : Fragment() {
 
     }
 
+    private fun toast (text: String){
+        Toast.makeText(context,text, Toast.LENGTH_SHORT).show()
+    }
 
+}
