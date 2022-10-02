@@ -68,12 +68,12 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Account created with email $email", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, RegisterDetailsActivity::class.java)
                 intent.putExtra("username",binding.editName.text.toString())
+                intent.putExtra("email",email)
                 startActivity(intent)
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Sign up failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
     }
 
     /*private fun registerNewUser(email: String, password: String) {

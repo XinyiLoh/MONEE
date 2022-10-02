@@ -1,7 +1,9 @@
 package com.example.monee.profile
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.monee.R
@@ -13,20 +15,12 @@ class TermsFragment  : Fragment() {
     private var _binding: TermsAndConditionsBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.btnBack.setOnClickListener {
-            //findNavController().navigate(R.id.action_TermsFragment_to_ProfileFragment)
-            //val fragment = TermsFragment()
-            //val transaction = fragmentManager?.beginTransaction()
-            //transaction?.replace(R.id.navigation,fragment)?.commit()
-            findNavController().navigateUp()
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = TermsAndConditionsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onDestroyView() {

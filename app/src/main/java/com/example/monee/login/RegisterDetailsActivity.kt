@@ -24,13 +24,14 @@ class RegisterDetailsActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener {
             val username = intent.getStringExtra("username").toString()
+            val email = intent.getStringExtra("email").toString()
             val gender: String = when (binding.rdGender.checkedRadioButtonId) {
                 binding.rdMale.id -> "Male"
                 binding.rdFemale.id -> "Female"
                 else -> ""
             }
             val phone = binding.editPhone.text.toString()
-            var newUser = User(username, gender, phone)
+            var newUser = User(username, gender,email, phone)
             addUser(newUser)
             startActivity(Intent(this, MainActivity::class.java))
         }
@@ -38,8 +39,8 @@ class RegisterDetailsActivity : AppCompatActivity() {
 
     private fun addUser(user: User) {
         val database = FirebaseFirestore.getInstance()
-        val uid = UUID.randomUUID().toString()
-        database.collection("users").document(uid).set(user)
+        val uid = UUID.randomUUID()
+        database.collection("users").document(uid.toString()).set(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "User info added", Toast.LENGTH_LONG).show();
             }

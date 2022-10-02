@@ -36,6 +36,7 @@ class UpdateFragment : Fragment() {
         binding.btnReset.setOnClickListener { reset() }
         binding.btnSubmit.setOnClickListener { submit() }
         binding.btnDelete.setOnClickListener { delete() }
+        binding.buttonBack.setOnClickListener { nav.navigateUp() }
 
         return binding.root
     }
@@ -63,24 +64,27 @@ class UpdateFragment : Fragment() {
     }
 
     private fun submit() {
-        val f = Categories(
-            id = id.toString().toInt(),
+        val c = Categories(
+            id = id.toInt(),
             amount = binding.edtAmount.text.toString().toDouble(),
             type = binding.edtSpinnerType.selectedItem.toString().trim(),
             category = binding.edtCategory.text.toString().trim(),
             date = binding.edtDate.text.toString()
         )
 
-        lifecycleScope.launch{
-            val err = vm.validate(f,false)
-            if (err != ""){
+        lifecycleScope.launch {
+            val err = vm.validate(c)
+            if (err != "") {
                 errorDialog(err)
                 return@launch
             }
+
+            vm.set(c)
+            nav.navigateUp()
+
         }
 
-        vm.set(f)
-        nav.navigateUp()
+
 
 
     }
