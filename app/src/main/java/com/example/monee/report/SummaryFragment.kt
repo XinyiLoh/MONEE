@@ -1,28 +1,33 @@
 package com.example.monee.report
 
-import android.content.ContentValues.TAG
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.monee.R
-import com.example.monee.databinding.FragmentHomeBinding
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.monee.databinding.FragmentSummaryBinding
-import com.example.monee.home.data.Categories
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
-import java.util.Objects
+import com.itextpdf.text.Document
+import com.itextpdf.text.Paragraph
+import com.itextpdf.text.pdf.PdfWriter
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 data class Category2(
+    val id: Int = 0,
     val amount: Double = 0.00,
-    val type: String = ""
+    val category: String = "",
+    val type: String = "",
+    val date: String = ""
 )
 
 class SummaryFragment : Fragment() {
@@ -30,9 +35,7 @@ class SummaryFragment : Fragment() {
     private var _binding: FragmentSummaryBinding?= null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var STORAGE_CODE = 1001
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +56,69 @@ class SummaryFragment : Fragment() {
 
         binding.fabPrint.setOnClickListener{
 
+           if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+
+               if (checkPermissions()) {
+                   val permission = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                   requestPermissions(permission, STORAGE_CODE)
+               } else {
+                   generatePDF()
+               }
+           }else{
+               generatePDF()
+           }
         }
+    }
+
+    fun checkPermissions(): Boolean {
+
+         var writeStoragePermission = ContextCompat.checkSelfPermission(
+             requireActivity().applicationContext,
+            WRITE_EXTERNAL_STORAGE
+        )
+        return writeStoragePermission == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when(requestCode){
+            STORAGE_CODE -> {
+                if(grantResults.size >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    generatePDF()
+                }else{
+                    Toast.makeText(context,"Permission denied.",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun generatePDF() {
+        val mDoc = Document()
+        val mFileName = SimpleDateFormat("yyyMMdd_HHmmss", Locale.getDefault())
+            .format(System.currentTimeMillis())
+
+        //val mFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/" + mFileName + ".pdf"
+        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
+
+        try{
+            PdfWriter.getInstance(mDoc,FileOutputStream(mFilePath))
+            mDoc.open()
+
+            val data = "Smtg nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+
+            mDoc.addAuthor("MONEE")
+            mDoc.add(Paragraph(data))
+            mDoc.newPage()
+            mDoc.close()
+            Toast.makeText(context,"$mFileName.pdf is created to \n$mFilePath",Toast.LENGTH_SHORT).show()
+
+        }catch (e:java.lang.Exception){
+            Toast.makeText(context,""+e.toString(),Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun readIncomeData(){
@@ -92,4 +157,24 @@ class SummaryFragment : Fragment() {
             }
     }
 
+    private fun readReport(){
+        Firebase.firestore
+            .collection("categories")
+            .get()
+            .addOnSuccessListener { snap->
+
+                var reportList = snap.toObjects<Category2>()
+
+                var out = ""
+                reportList.forEach{
+                    out += "ID = ${it.id} | DATE = ${it.date} | TYPE = ${it.type} | CATEGORY = ${it.category} | AMOUNT = ${it.amount}"
+                }
+
+                //Toast.makeText(context,out,Toast.LENGTH_SHORT).show()
+
+            }.addOnFailureListener {
+                Toast.makeText(context,"Failed to get data.",Toast.LENGTH_SHORT).show()
+            }
+
+    }
 }
