@@ -21,10 +21,11 @@ class TermsFragment  : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_TermsFragment_to_ProfileFragment)
+            //findNavController().navigate(R.id.action_TermsFragment_to_ProfileFragment)
             //val fragment = TermsFragment()
             //val transaction = fragmentManager?.beginTransaction()
             //transaction?.replace(R.id.navigation,fragment)?.commit()
+            findNavController().navigateUp()
         }
     }
 

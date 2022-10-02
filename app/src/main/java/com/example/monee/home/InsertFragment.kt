@@ -72,7 +72,7 @@ class InsertFragment : Fragment() {
 
 
             vm.set(data)
-            //nav.navigateUp()
+            nav.navigateUp()
 
             /*Firebase.firestore
             .collection("categories")
