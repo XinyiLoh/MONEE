@@ -39,6 +39,7 @@ class InsertFragment : Fragment() {
         reset()
         binding.btnReset.setOnClickListener { reset() }
         binding.btnSubmit.setOnClickListener { submit() }
+        binding.btnBack.setOnClickListener{ nav.navigateUp()}
 
         return binding.root
     }
@@ -56,7 +57,7 @@ class InsertFragment : Fragment() {
     private fun submit() {
 
         val data = Categories(
-            id = binding.editId.text.toString().toIntOrNull() ?: 0,
+            id = binding.editId.text.toString().toInt()?: 0,
             amount = binding.editAmount.text.toString().toDoubleOrNull() ?: 0.0,
             type = binding.spinnerType.selectedItem.toString().trim(),
             category = binding.editCategory.text.toString().trim(),
@@ -72,13 +73,7 @@ class InsertFragment : Fragment() {
 
 
             vm.set(data)
-            //nav.navigateUp()
-
-            /*Firebase.firestore
-            .collection("categories")
-            .document(data.id.toString())
-            .set(data)*/
-
+            nav.navigateUp()
 
         }
 

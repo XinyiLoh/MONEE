@@ -44,8 +44,6 @@ class CategoriesAdapter (
         holder.txtCategory.text = category.category
         holder.txtAmount.text  = category.amount.toString()
 
-        // TODO: Photo (blob to bitmap)
-
 
         fn(holder, category)
     }

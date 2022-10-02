@@ -16,7 +16,7 @@
         android:label="homeFragment"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/insertFragment"
+        android:id="@+id/InsertFragment"
         android:name="com.example.monee.home.InsertFragment"
         android:label="fragment_insert"
         tools:layout="@layout/fragment_insert" />
@@ -31,19 +31,16 @@
         android:id="@+id/profileFragment"
         android:name="com.example.monee.profile.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/fragment_profile">
-        <action
-            android:id="@+id/action_ProfileFragment_to_TermsFragment"
-            app:destination="@id/termsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/termsFragment"
         android:name="com.example.monee.profile.TermsFragment"
         android:label="terms_fragment"
-        tools:layout="@layout/terms_and_conditions">
-        <action
-            android:id="@+id/action_TermsFragment_to_ProfileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/terms_and_conditions"/>
+    <fragment
+        android:id="@+id/UpdateFragment"
+        android:name="com.example.monee.home.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" />
 
 </navigation>

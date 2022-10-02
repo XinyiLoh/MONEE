@@ -61,5 +61,12 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
     implementation 'com.itextpdf:itextg:5.5.10'
 
+
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.1'
+
+
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.1'
+
+
 }

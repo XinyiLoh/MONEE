@@ -27,10 +27,7 @@ class UpdateFragment : Fragment() {
     private val vm: CategoriesViewModel by activityViewModels()
     private val nav by lazy { findNavController() }
 
-
     private val id by lazy { requireArguments().getString("id") ?: "" }
-    private val formatter = SimpleDateFormat("dd MMMM yyyy '-' hh:mm:ss a", Locale.getDefault())
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
@@ -83,14 +80,14 @@ class UpdateFragment : Fragment() {
         }
 
         vm.set(f)
-        //nav.navigateUp()
+        nav.navigateUp()
 
 
     }
 
     private fun delete() {
         vm.delete(id)
-        //nav.navigateUp()
+        nav.navigateUp()
 
     }
 
