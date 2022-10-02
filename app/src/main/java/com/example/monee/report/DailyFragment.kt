@@ -15,6 +15,15 @@ import com.example.monee.home.data.Categories
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_daily.*
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+data class Categories(
+    val amount: String = "",
+    val type: String = "",
+    val category: String = "",
+    val date: String = ""
+)
 
 class DailyFragment : Fragment() {
 
@@ -38,6 +47,10 @@ class DailyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val db = Firebase.firestore
+
+        //val query = db.collection("categories").whereEqualTo()
+
         calendarView.setOnDateChangeListener { calendarView, year, month, day ->
             val curDate: String = java.lang.String.valueOf(day)
             val year = java.lang.String.valueOf(year)
@@ -47,6 +60,9 @@ class DailyFragment : Fragment() {
 
             val dateSelected = curDate + "/" + month + "/" + year
             //getDailyRecord(dateSelected)
+
+            val query = db.collection("categories").whereEqualTo("date",dateSelected)
+
 
         }
     }
