@@ -27,10 +27,10 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.btnList.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
 
-        binding.btnRead.setOnClickListener {
+       /* binding.btnRead.setOnClickListener {
             read()
 
-        }
+        }*/
 
         //binding.btnSet.setOnClickListener { set() }
         binding.btnUpdate.setOnClickListener { update() }
@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
 
     }*/
 
-    private fun read() {
+    /*private fun read() {
 
         Firebase.firestore
             .collection("categories")
@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
 
             }
 
-    }
+    }*/
 
     /*private fun set() {
         val f = Categories(2,17.9,"Income","Shopping")

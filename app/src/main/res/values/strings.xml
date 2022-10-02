@@ -54,16 +54,17 @@
 
     <string name="goals">Goals</string>
     <string name="tnc">Terms and Conditions</string>
-    <string name="tnc_text">
 
-Please read these terms and conditions carefully before using Our Service.
-
-    </string>
     <string name="thisYear">2022</string>
     <string name="spinTitle">SPIN To Get Points</string>
     <string name="phone">Phone</string>
     <string name="print">Print</string>
     <string name="totalIncome">Total Income</string>
     <string name="totalExpenses">Total Expenses</string>
+
+    <string name="tnc_text1">
+These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
+    </string>
+    <string name="back">Back</string>
 
 </resources>

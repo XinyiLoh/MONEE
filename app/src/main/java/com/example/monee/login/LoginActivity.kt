@@ -2,7 +2,10 @@ package com.example.monee.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.monee.MainActivity
 import com.example.monee.R
@@ -12,55 +15,80 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    //private lateinit var actionBar: ActionBar
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
+
+        //actionBar = supportActionBar!!
+        //actionBar.title = "Login"
 
         auth = FirebaseAuth.getInstance()
+        checkUser()
 
-        val name = binding.editName.text.toString()
-        val email = binding.editEmail.text.toString()
-        val phone = binding.editPhone.text.toString()
-        val pw = binding.editPw.text.toString()
-        val btnLogin = binding.btnLogin
-        val toRegister = binding.textRegister
-
-        btnLogin.setOnClickListener {
-            validate(name, phone, email, pw)
-            loginUser(name, phone, email, pw)
+        binding.textRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        toRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+        binding.btnLogin.setOnClickListener {
+            validate()
         }
     }
 
-    private fun validate(
+    private fun validate(){
+        val email = binding.editEmail.text.toString().trim()
+        val pw = binding.editPw.text.toString().trim()
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            binding.editEmail.setError("Invalid email format")
+        }else if(TextUtils.isEmpty(pw)){
+            binding.editPw.setError("Please enter password")
+        }else if(pw.length<6){
+            binding.editPw.setError("Password must at least 6 characters")
+        }else{
+            firebaseLogin()
+        }
+    }
+
+    private fun firebaseLogin(){
+        val email = binding.editEmail.text.toString().trim()
+        val pw = binding.editPw.text.toString().trim()
+
+        auth.signInWithEmailAndPassword(email,pw)
+            .addOnSuccessListener {
+                //get user info
+                val firebaseUser = auth.currentUser
+                val email = firebaseUser!!.email
+                Toast.makeText(this,"Logged in as $email", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,MainActivity::class.java))
+            }
+            .addOnFailureListener{ e ->
+                Toast.makeText(this,"Login failed due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun checkUser(){
+        val firebaseUser=auth.currentUser
+        if(firebaseUser!=null){
+            startActivity(Intent(this,MainActivity::class.java))
+        }
+    }
+
+    /*private fun loginUser(
         userName: String,
         userPhone: String,
         userEmail: String,
         userPassword: String
     ) {
-        if ((userName == "Admin") && (userPhone == "1234")
-            && (userEmail == "admin@gmail.com") && (userPassword == "1234")
-        ) {
-            startActivity(Intent(this, MainActivity::class.java))
-        } else if ((userName.isEmpty()) && (userPhone.isEmpty())
+        if ((userName.isEmpty()) && (userPhone.isEmpty())
             && (userEmail.isEmpty()) && (userPassword.isEmpty())
         ) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }
-    }
 
-    private fun loginUser(
-        userName: String,
-        userPhone: String,
-        userEmail: String,
-        userPassword: String
-    ) {
         auth.signInWithEmailAndPassword(userEmail, userPassword)
             .addOnSuccessListener {
                 Toast.makeText(baseContext, "Login Successfull", Toast.LENGTH_LONG).show();
@@ -72,5 +100,5 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, exception.message.toString(), Toast.LENGTH_LONG).show();
             }
 
-    }
+    }*/
 }

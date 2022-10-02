@@ -52,6 +52,19 @@ class InsertFragment : Fragment() {
 
     private fun submit() {
 
+        /*val data = Categories(
+            id = binding.editId.text.toString().toIntOrNull() ?:0,
+            amount = binding.editAmount.text.toString().toDoubleOrNull() ?:0.0,
+            category = binding.editCategory.text.toString().trim(),
+            type = binding.spinnerType.selectedItem.toString().trim(),
+            date = binding.editDate.text.toString()
+        )
+
+        Firebase.firestore
+            .collection("categories")
+            .document(data.id.toString())
+            .set(data)*/
+
         val data = Categories(
             id = binding.editId.text.toString().toIntOrNull() ?:0,
             amount = binding.editAmount.text.toString().toDoubleOrNull() ?:0.0,
@@ -65,7 +78,8 @@ class InsertFragment : Fragment() {
             .document(data.id.toString())
             .set(data)
 
-        //nav.navigateUp()
+
+        nav.navigateUp()
 
     }
 

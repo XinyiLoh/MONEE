@@ -8,41 +8,58 @@
 
     <TextView
         android:id="@+id/textViewType"
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="24dp"
         android:layout_marginStart="8dp"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="XXXX" />
+        tools:text="XXX" />
 
     <TextView
         android:id="@+id/textViewCategory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="27dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewAmount"
+        app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toEndOf="@+id/textViewType"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="XXXXXX" />
+        app:layout_constraintVertical_bias="0.517"
+        tools:text="XXXXX" />
 
     <TextView
         android:id="@+id/textViewAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="00" />
+        app:layout_constraintVertical_bias="0.529"
+        tools:text="XXXX" />
+
+    <TextView
+        android:id="@+id/textViewr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewAmount"
+        app:layout_constraintStart_toEndOf="@+id/textViewCategory"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529"
+        tools:text="RM" />
 
     <Button
         android:id="@+id/btnDelete"

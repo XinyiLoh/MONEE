@@ -7,7 +7,7 @@ import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 
 class CategoriesViewModel : ViewModel() {
-    // TODO: Initialization
+
     private val col = Firebase.firestore.collection("categories")
     private val cate = MutableLiveData<List<Categories>>()
 
@@ -30,7 +30,9 @@ class CategoriesViewModel : ViewModel() {
 
     fun deleteAll() {
         //col.get().addOnSuccessListener { snap -> snap.documents.forEach { doc -> delete(doc.id) } }
-        cate.value?.forEach { f -> delete(f.id.toString()) }
+        //cate.value?.forEach { f -> delete(f.id.toString()) }
+
+        cate.value?.forEach { f -> delete(f.amount.toString()) }
 
     }
 

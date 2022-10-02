@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/insertFragment"
-        android:name="com.example.monee.InsertFragment"
+        android:name="com.example.monee.home.InsertFragment"
         android:label="fragment_insert"
         tools:layout="@layout/fragment_insert" />
 
