@@ -30,7 +30,9 @@ class CategoriesViewModel : ViewModel() {
 
     fun deleteAll() {
         //col.get().addOnSuccessListener { snap -> snap.documents.forEach { doc -> delete(doc.id) } }
-        cate.value?.forEach { f -> delete(f.id.toString()) }
+        //cate.value?.forEach { f -> delete(f.id.toString()) }
+
+        cate.value?.forEach { f -> delete(f.amount.toString()) }
 
     }
 

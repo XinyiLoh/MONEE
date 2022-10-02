@@ -40,7 +40,7 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        binding.btnInsert.setOnClickListener { nav.navigate(R.id.insertFragment) }
+        binding.btnInsert.setOnClickListener { findNavController().navigate(R.id.insertFragment) }
         binding.btnDeleteAll.setOnClickListener { deleteAll() }
 
         adapter = CategoriesAdapter() { holder, categories ->
@@ -53,16 +53,6 @@ class ListFragment : Fragment() {
         }
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-
-
-        /*Firebase.firestore
-            .collection("categories")
-            .get()
-            .addOnSuccessListener { snap ->
-                val list = snap.toObjects<Categories>()
-                adapter.submitList(list)
-                binding.txtCount.text = "${list.size} record(s)"
-            }*/
 
         vm.getAll().observe(viewLifecycleOwner){
             adapter.submitList(it)
