@@ -61,21 +61,16 @@ class ListFragment : Fragment() {
         /*Firebase.firestore
             .collection("categories")
             .get()
-            .addOnSuccessListener { snapshot ->
-                val list = snapshot.toObjects<Categories>()
+            .addOnSuccessListener { snap ->
+                val list = snap.toObjects<Categories>()
                 adapter.submitList(list)
                 binding.txtCount.text = "${list.size} record(s)"
             }*/
 
-        Firebase.firestore
-            .collection("categories")
-            .get()
-            .addOnSuccessListener { snapshot ->
-                val list = snapshot.toObjects<Categories>()
-                adapter.submitList(snapshot.toObjects<Categories>())
-                binding.txtCount.text = "${list.size} record(s)"
-            }
-
+        /*vm.getAll().observe(viewLifecycleOwner){
+            adapter.submitList(it)
+            binding.txtCount.text = "${it.size} record(s)"
+        }*/
 
 
         return binding.root
@@ -84,13 +79,17 @@ class ListFragment : Fragment() {
     }
 
     private fun deleteAll() {
-        // TODO: Delete all
+        vm.deleteAll()
 
     }
 
     private fun delete(id: String) {
-        // TODO: Delete
 
+        /*Firebase.firestore
+            .collection("categories")
+            .document(id)
+            .delete()*/
+        vm.delete(id)
     }
 
     private fun toast (text: String){

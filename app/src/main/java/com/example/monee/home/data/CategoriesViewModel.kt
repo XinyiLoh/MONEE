@@ -1,9 +1,19 @@
 package com.example.monee.home.data
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.ktx.Firebase
 
 class CategoriesViewModel : ViewModel() {
     // TODO: Initialization
+    private val col = Firebase.firestore.collection("categories")
+    private val cate = MutableLiveData<List<Categories>>()
+
+    init{
+        col.addSnapshotListener { snap, _ -> cate.value = snap?.toObjects() }
+    }
 
 
     fun get(id: String): Categories? {
@@ -11,23 +21,21 @@ class CategoriesViewModel : ViewModel() {
         return null
     }
 
-    fun getAll() {
-        // TODO
-
-    }
+    fun getAll() = cate
 
     fun delete(id: String) {
-        // TODO
+        col.document(id).delete()
 
     }
 
     fun deleteAll() {
-        // TODO
+        //col.get().addOnSuccessListener { snap -> snap.documents.forEach { doc -> delete(doc.id) } }
+        cate.value?.forEach { f -> delete(f.id.toString()) }
 
     }
 
     fun set(f: Categories) {
-        // TODO
+        col.document(f.id.toString()).set(f)
 
     }
 
