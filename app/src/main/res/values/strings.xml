@@ -62,5 +62,8 @@ Please read these terms and conditions carefully before using Our Service.
     <string name="thisYear">2022</string>
     <string name="spinTitle">SPIN To Get Points</string>
     <string name="phone">Phone</string>
+    <string name="print">Print</string>
+    <string name="totalIncome">Total Income</string>
+    <string name="totalExpenses">Total Expenses</string>
 
 </resources>
