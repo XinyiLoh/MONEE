@@ -10,9 +10,9 @@
         android:icon="@drawable/ic_baseline_table_rows_24"
         android:title="@string/summaryReport" />
     <item
-        android:id="@+id/dailyReport"
+        android:id="@+id/history"
         android:icon="@drawable/ic_baseline_calendar_month_24"
-        android:title="@string/daily_report" />
+        android:title="@string/daily" />
     <item
         android:id="@+id/carloanCal"
         android:icon="@drawable/ic_baseline_directions_car_24"

@@ -5,65 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:outlineAmbientShadowColor="#FFE3E1">
 
-        <TextView
-            android:id="@+id/textView_cat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="298dp"
-            android:text="TextView"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_flow"
-            app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:id="@+id/textView_flow"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/textView_flow"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="4dp"
-            android:text="TextView"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textColor="#002E94"/>
 
-        <TextView
-            android:id="@+id/textView_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="6dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/textView_amount"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.689"
-            app:layout_constraintStart_toEndOf="@+id/textView_flow"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.555" />
+            <TextView
+                android:id="@+id/textView_cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                android:layout_margin="5dp"
+                android:textColor="#FD841F"
+                android:textAlignment="textEnd"/>
 
-        <TextView
-            android:id="@+id/textView_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.834"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.821" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                android:layout_margin="5dp"
+                android:textAlignment="textEnd"/>
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

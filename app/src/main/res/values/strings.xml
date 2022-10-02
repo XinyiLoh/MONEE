@@ -5,7 +5,7 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="carloan_cal">Car Loan Calculator</string>
-    <string name="daily_report">Daily Report</string>
+    <string name="daily">History</string>
 
     <string name="name">Name</string>
     <string name="password">Password</string>
