@@ -38,12 +38,12 @@ class ListFragment : Fragment() {
         binding.btnDeleteAll.setOnClickListener { deleteAll() }
 
         adapter = CategoriesAdapter() { holder, categories ->
-            // Item click
+
             holder.root.setOnClickListener {
                 nav.navigate(R.id.UpdateFragment, bundleOf("id" to categories.id))
 
             }
-            // Delete button click
+
             holder.btnDelete.setOnClickListener {delete(categories.id.toString()) }
         }
         binding.rv.adapter = adapter
@@ -65,10 +65,6 @@ class ListFragment : Fragment() {
 
     private fun delete(id: String) {
 
-        /*Firebase.firestore
-            .collection("categories")
-            .document(id)
-            .delete()*/
         vm.delete(id)
     }
 
