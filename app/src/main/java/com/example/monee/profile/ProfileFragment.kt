@@ -14,29 +14,22 @@ import com.example.monee.databinding.FragmentProfileBinding
 import com.example.monee.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    var database: FirebaseDatabase? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProfileBinding.inflate(inflater,container,false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
 
-        /*val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            // User is signed in
-            binding.textUsername.setText(user.email)
-            binding.textEmail.setText(user.email)
-        } else {
-            // No user is signed in
-            binding.textUsername.setText("null")
-            binding.textEmail.setText("null")
-        }*/
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,47 +40,13 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(context, LoginActivity::class.java))
         }
 
-        binding.menuTnc.setOnClickListener {
-           findNavController().navigate(R.id.termsFragment)
-            //val fragment = TermsFragment()
-            //val transaction = fragmentManager?.beginTransaction()
-            //transaction?.replace(R.id.navigation,fragment)?.commit()
-        }
+        val user = FirebaseAuth.getInstance().currentUser
+        val reference = FirebaseDatabase.getInstance().getReference("users")
+        val userId = user?.uid
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        //binding.menuGoals.setOnClickListener { setGoals() }
-        //binding.menuEditprofile.setOnClickListener { editProfile() }
-        //binding.menuChangepw.setOnClickListener { changePassword() }
-        //binding.btnLogout.setOnClickListener { logout() }
-
-        binding.menuTnc.setOnClickListener {
-
-        }
-    }*/
-
-    /*private fun setGoals() {
-
-    }
-
-    private fun editProfile() {
-
-    }
-
-    private fun changePassword() {
-
-    }
-
-    private fun logout() {
-
-    }*/
 }
