@@ -1,5 +1,6 @@
 package com.example.monee.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,10 +34,6 @@ class ListFragment : Fragment() {
 
     private lateinit var adapter: CategoriesAdapter
 
-    private lateinit var dbref : DatabaseReference
-    private lateinit var categoriesRecycleview : RecyclerView
-    private lateinit var categoriesArrayList : ArrayList<Categories>
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,14 +64,12 @@ class ListFragment : Fragment() {
                 binding.txtCount.text = "${list.size} record(s)"
             }*/
 
-        /*vm.getAll().observe(viewLifecycleOwner){
+        vm.getAll().observe(viewLifecycleOwner){
             adapter.submitList(it)
             binding.txtCount.text = "${it.size} record(s)"
-        }*/
-
+        }
 
         return binding.root
-
 
     }
 

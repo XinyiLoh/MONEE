@@ -7,7 +7,7 @@ import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 
 class CategoriesViewModel : ViewModel() {
-    // TODO: Initialization
+
     private val col = Firebase.firestore.collection("categories")
     private val cate = MutableLiveData<List<Categories>>()
 

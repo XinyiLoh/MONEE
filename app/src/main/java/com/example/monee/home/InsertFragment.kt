@@ -65,7 +65,7 @@ class InsertFragment : Fragment() {
             .document(data.id.toString())
             .set(data)
 
-        //nav.navigateUp()
+        nav.navigateUp()
 
     }
 

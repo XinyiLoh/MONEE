@@ -33,7 +33,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.menuTnc.setOnClickListener {
-            findNavController().navigate(R.id.action_ProfileFragment_to_TermsFragment)
+           // findNavController().navigate(R.id.action_ProfileFragment_to_TermsFragment)
             //val fragment = TermsFragment()
             //val transaction = fragmentManager?.beginTransaction()
             //transaction?.replace(R.id.navigation,fragment)?.commit()
