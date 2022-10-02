@@ -100,18 +100,18 @@ class SummaryFragment : Fragment() {
         val mFileName = SimpleDateFormat("yyyMMdd_HHmmss", Locale.getDefault())
             .format(System.currentTimeMillis())
 
-        //val mFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/" + mFileName + ".pdf"
-        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
+        val mFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/" + mFileName + ".pdf"
+        //val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
 
         try{
             PdfWriter.getInstance(mDoc,FileOutputStream(mFilePath))
             mDoc.open()
 
-            val data = "Smtg nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+            val data = readReport()
 
             mDoc.addAuthor("MONEE")
             mDoc.add(Paragraph(data))
-            mDoc.newPage()
+            //mDoc.newPage()
             mDoc.close()
             Toast.makeText(context,"$mFileName.pdf is created to \n$mFilePath",Toast.LENGTH_SHORT).show()
 
@@ -157,7 +157,8 @@ class SummaryFragment : Fragment() {
             }
     }
 
-    private fun readReport(){
+    private fun readReport(): String{
+        var out = ""
         Firebase.firestore
             .collection("categories")
             .get()
@@ -165,7 +166,6 @@ class SummaryFragment : Fragment() {
 
                 var reportList = snap.toObjects<Category2>()
 
-                var out = ""
                 reportList.forEach{
                     out += "ID = ${it.id} | DATE = ${it.date} | TYPE = ${it.type} | CATEGORY = ${it.category} | AMOUNT = ${it.amount}"
                 }
@@ -176,5 +176,6 @@ class SummaryFragment : Fragment() {
                 Toast.makeText(context,"Failed to get data.",Toast.LENGTH_SHORT).show()
             }
 
+        return out
     }
 }
