@@ -20,9 +20,9 @@ import kotlinx.android.synthetic.main.fragment_spinner.view.*
 import java.io.InterruptedIOException
 
 
-class SpinnerFragment : Fragment(), Animation.AnimationListener {
-
-    private var _binding: FragmentSpinnerBinding ?= null
+class SpinnerFragment : Fragment() {
+//, Animation.AnimationListener
+    /*private var _binding: FragmentSpinnerBinding ?= null
     private val binding get() = _binding!!
 
     private var count = 0
@@ -145,7 +145,7 @@ class SpinnerFragment : Fragment(), Animation.AnimationListener {
 
             return false
         }
-    }
+    }*/
 
 
 }
