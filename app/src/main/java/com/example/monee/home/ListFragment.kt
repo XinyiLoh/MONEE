@@ -41,6 +41,7 @@ class ListFragment : Fragment() {
             // Item click
             holder.root.setOnClickListener {
                 nav.navigate(R.id.UpdateFragment, bundleOf("id" to categories.id))
+
             }
             // Delete button click
             holder.btnDelete.setOnClickListener {delete(categories.id.toString()) }
@@ -50,7 +51,7 @@ class ListFragment : Fragment() {
 
         vm.getAll().observe(viewLifecycleOwner){
             adapter.submitList(it)
-            binding.txtCount.text = "${it.size} record(s)"
+            binding.txtCount.text = "${it.size} transaction(s)"
         }
 
         return binding.root

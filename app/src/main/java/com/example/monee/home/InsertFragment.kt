@@ -39,6 +39,7 @@ class InsertFragment : Fragment() {
         reset()
         binding.btnReset.setOnClickListener { reset() }
         binding.btnSubmit.setOnClickListener { submit() }
+        binding.btnBack.setOnClickListener{ nav.navigateUp()}
 
         return binding.root
     }
