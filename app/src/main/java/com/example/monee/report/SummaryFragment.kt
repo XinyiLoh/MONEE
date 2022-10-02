@@ -15,6 +15,7 @@ import com.example.monee.databinding.FragmentSummaryBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
+import com.itextpdf.text.Chunk
 import com.itextpdf.text.Document
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfWriter
@@ -24,10 +25,10 @@ import java.util.*
 
 data class Category2(
     val id: Int = 0,
-    val amount: Double = 0.00,
-    val category: String = "",
+    val date: String = "",
     val type: String = "",
-    val date: String = ""
+    val category: String = "",
+    val amount: Double = 0.00
 )
 
 class SummaryFragment : Fragment() {
@@ -101,17 +102,20 @@ class SummaryFragment : Fragment() {
             .format(System.currentTimeMillis())
 
         val mFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/" + mFileName + ".pdf"
-        //val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
 
         try{
+
             PdfWriter.getInstance(mDoc,FileOutputStream(mFilePath))
             mDoc.open()
+            mDoc.add(Chunk(""))
 
-            val data = readReport()
+            val data = "MONEE Overall History Record \n" + readReport()
+            binding.textViewTest.text = readReport()
 
-            mDoc.addAuthor("MONEE")
-            mDoc.add(Paragraph(data))
             //mDoc.newPage()
+            mDoc.addAuthor("MONEE")
+
+            mDoc.add(Paragraph(data))
             mDoc.close()
             Toast.makeText(context,"$mFileName.pdf is created to \n$mFilePath",Toast.LENGTH_SHORT).show()
 
@@ -164,14 +168,18 @@ class SummaryFragment : Fragment() {
             .get()
             .addOnSuccessListener { snap->
 
-                var reportList = snap.toObjects<Category2>()
-
+                val reportList = snap.toObjects<Category2>()
                 reportList.forEach{
-                    out += "ID = ${it.id} | DATE = ${it.date} | TYPE = ${it.type} | CATEGORY = ${it.category} | AMOUNT = ${it.amount}"
+                    var id = it.id.toString()
+                    var date = it.id.toString()
+                    var type = it.type
+                    var cat = it.category
+                    var amt = it.amount.toString()
+
+                    out += "ID = $id | DATE = $date | TYPE = $type | CATEGORY = $cat | AMOUNT = $amt \n"
+
+                    //out += "ID = ${it.id} | DATE = ${it.date} | TYPE = ${it.type} | CATEGORY = ${it.category} | AMOUNT = ${it.amount} \n"
                 }
-
-                //Toast.makeText(context,out,Toast.LENGTH_SHORT).show()
-
             }.addOnFailureListener {
                 Toast.makeText(context,"Failed to get data.",Toast.LENGTH_SHORT).show()
             }
@@ -179,3 +187,4 @@ class SummaryFragment : Fragment() {
         return out
     }
 }
+

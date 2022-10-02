@@ -10,6 +10,7 @@ import com.example.monee.calculator.CarLoanFragment
 import com.example.monee.home.InsertFragment
 import com.example.monee.home.ListFragment
 import com.example.monee.profile.ProfileFragment
+import com.example.monee.profile.TermsFragment
 import com.example.monee.report.DailyFragment
 import com.example.monee.report.SummaryFragment
 import com.google.android.material.navigation.NavigationView
@@ -72,6 +73,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.profile -> {
                 replaceFragment(ProfileFragment())
                 setToolBarTitle("Profile")
+            }
+            R.id.tnc ->{
+                replaceFragment(TermsFragment())
+                setToolBarTitle("Terms & Conditions")
             }
             else -> {
             }
