@@ -9,10 +9,14 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.monee.databinding.FragmentUpdateBinding
 import com.example.monee.home.data.Categories
 import com.example.monee.home.data.CategoriesViewModel
+import com.example.monee.home.util.errorDialog
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,28 +44,53 @@ class UpdateFragment : Fragment() {
     }
 
     private fun reset() {
-        // TODO: Load data
+        lifecycleScope.launch {
+            val f = vm.get(id)
+            if(f == null){
+                nav.navigateUp()
+                return@launch
+            }
+
+            load(f)
+        }
 
     }
 
-    /*private fun load(f: Categories) {
-        binding.txtId.text = f.id
-        binding.edtName.setText(f.name)
-        binding.edtAge.setText(f.age.toString())
-
-        // TODO: Load photo and date
-
-
-        binding.edtName.requestFocus()
-    }*/
+    private fun load(f: Categories) {
+        binding.txtId.text = f.id.toString()
+        binding.edtCategory.setText(f.category)
+        binding.edtAmount.setText(f.amount.toString())
+        binding.edtDate.setText(f.date)
+        binding.edtSpinnerType.setSelection(1)
+        binding.edtDate.requestFocus()
+    }
 
     private fun submit() {
-        // TODO: Update (set)
+        val f = Categories(
+            id = id.toInt(),
+            amount = binding.edtAmount.text.toString().toDouble(),
+            type = binding.edtSpinnerType.selectedItem.toString().trim(),
+            category = binding.edtCategory.text.toString().trim(),
+            date = binding.edtDate.text.toString()
+        )
+
+        lifecycleScope.launch{
+            val err = vm.validate(f,false)
+            if (err != ""){
+                errorDialog(err)
+                return@launch
+            }
+        }
+
+        vm.set(f)
+        //nav.navigateUp()
+
 
     }
 
     private fun delete() {
-        // TODO: Delete
+        vm.delete(id)
+        //nav.navigateUp()
 
     }
 

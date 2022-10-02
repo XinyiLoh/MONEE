@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.UpdateFragment">
+    tools:context=".home.UpdateFragment">
 
     <EditText
-        android:id="@+id/edtDate"
+        android:id="@+id/edtAmount"
         android:layout_width="306dp"
         android:layout_height="44dp"
         android:layout_marginStart="8dp"
@@ -15,11 +15,11 @@
         android:ems="10"
         android:importantForAccessibility="no"
         android:importantForAutofill="no"
-        android:inputType="date"
+        android:inputType="number|numberDecimal"
         android:maxLength="50"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edtAge"
+        app:layout_constraintTop_toBottomOf="@+id/edtCategory"
         tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -42,23 +42,23 @@
         tools:text="XXX" />
 
     <EditText
-        android:id="@+id/edtId"
+        android:id="@+id/edtDate"
         android:layout_width="306dp"
         android:layout_height="44dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:importantForAccessibility="no"
         android:importantForAutofill="no"
-        android:inputType="none"
+        android:inputType="date"
         android:maxLength="50"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/txtId"
+        app:layout_constraintTop_toBottomOf="@+id/edtSpinnerType"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/edtAge"
+        android:id="@+id/edtCategory"
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -66,10 +66,10 @@
         android:ems="10"
         android:importantForAccessibility="no"
         android:importantForAutofill="no"
-        android:inputType="number"
+        android:inputType="none"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edtSpinnerType"
+        app:layout_constraintTop_toBottomOf="@+id/edtDate"
         tools:ignore="TouchTargetSizeCheck" />
 
 
@@ -78,10 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="65dp"
         android:text="Reset"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edtDate" />
+        app:layout_constraintTop_toBottomOf="@+id/edtAmount" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -115,50 +115,49 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@id/edtId"
-        android:text="Name"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edtId"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/edtId" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/edtAge"
-        android:text="Age"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edtAge"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/edtAge" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
+        android:labelFor="@id/edtDate"
+        android:text="@string/date"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/edtDate"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/edtDate" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/edtCategory"
+        android:text="@string/category"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edtCategory"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/edtCategory" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edtAmount"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/edtAmount" />
+
     <Spinner
         android:id="@+id/edtSpinnerType"
         android:layout_width="306dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="24dp"
         android:entries="@array/spinnerType"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtId" />
+        app:layout_constraintTop_toBottomOf="@+id/txtId" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
         android:text="@string/type"
         app:layout_constraintBottom_toBottomOf="@+id/edtSpinnerType"
         app:layout_constraintEnd_toStartOf="@+id/edtSpinnerType"

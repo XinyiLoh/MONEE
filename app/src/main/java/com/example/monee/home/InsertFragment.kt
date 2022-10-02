@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.monee.databinding.FragmentInsertBinding
 import com.example.monee.home.data.Categories
 import com.example.monee.home.data.CategoriesViewModel
+import com.example.monee.home.util.errorDialog
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 class InsertFragment : Fragment() {
 
-    private var _binding:FragmentInsertBinding   ?= null
+    private var _binding: FragmentInsertBinding? = null
     private val binding get() = _binding!!
     private val nav by lazy { findNavController() }
     private val vm: CategoriesViewModel by activityViewModels()
@@ -52,35 +55,32 @@ class InsertFragment : Fragment() {
 
     private fun submit() {
 
-        /*val data = Categories(
-            id = binding.editId.text.toString().toIntOrNull() ?:0,
-            amount = binding.editAmount.text.toString().toDoubleOrNull() ?:0.0,
-            category = binding.editCategory.text.toString().trim(),
+        val data = Categories(
+            id = binding.editId.text.toString().toIntOrNull() ?: 0,
+            amount = binding.editAmount.text.toString().toDoubleOrNull() ?: 0.0,
             type = binding.spinnerType.selectedItem.toString().trim(),
+            category = binding.editCategory.text.toString().trim(),
             date = binding.editDate.text.toString()
         )
 
-        Firebase.firestore
+        lifecycleScope.launch {
+            val err = vm.validate(data)
+            if (err != "") {
+                errorDialog(err)
+                return@launch
+            }
+
+
+            vm.set(data)
+            //nav.navigateUp()
+
+            /*Firebase.firestore
             .collection("categories")
             .document(data.id.toString())
             .set(data)*/
 
-        val data = Categories(
-            id = binding.editId.text.toString().toIntOrNull() ?:0,
-            amount = binding.editAmount.text.toString().toDoubleOrNull() ?:0.0,
-            category = binding.editCategory.text.toString().trim(),
-            type = binding.spinnerType.selectedItem.toString().trim(),
-            date = binding.editDate.text.toString()
-        )
 
-        Firebase.firestore
-            .collection("categories")
-            .document(data.id.toString())
-            .set(data)
-
-
-        nav.navigateUp()
+        }
 
     }
-
 }

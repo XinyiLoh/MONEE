@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         when(item.itemId){
             R.id.home -> {
-                replaceFragment(InsertFragment())
+                replaceFragment(ListFragment())
                 setToolBarTitle("Home")}
             R.id.summaryReport -> {
                 replaceFragment(SummaryFragment())
